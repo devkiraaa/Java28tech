@@ -1,0 +1,15 @@
+import java.util.Scanner;
+public class bai1{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        long b = sc.nextLong();
+        sc.nextLine();
+        char C = sc.nextLine().charAt(0);
+        float d = sc.nextFloat();
+        double e = sc.nextDouble();
+        System.out.println(a + "\n" + b + "\n" + C);
+        System.out.printf("%.2f\n", d);
+        System.out.printf("%.9f", e);
+    }
+}

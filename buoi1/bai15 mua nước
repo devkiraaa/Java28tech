@@ -1,0 +1,9 @@
+import java.util.Scanner;
+public class bai1{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+       int N = sc.nextInt();
+       int x = sc.nextInt();
+       System.out.println("So nuoc mua duoc la : " + N / x + " !!!!!");
+    }
+}

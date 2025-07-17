@@ -1,0 +1,15 @@
+import java.util.Scanner;
+public class bai1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        long st1 = a / b * b;
+        long st2;
+        if(a % b == 0)
+        st2 = a;
+        else 
+        st2 = (a / b + 1) * b;
+        System.out.println(st1 + "\n" + st2);
+    }
+}

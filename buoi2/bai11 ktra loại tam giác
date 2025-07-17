@@ -1,0 +1,31 @@
+import java.util.Scanner;
+public class bai1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        if(a > 0 && b > 0 && c > 0){
+            if(a + b > c && a + c > b && b + c > a){
+                if(a == b && b == c){
+                    System.out.println("TAM GIAC DEU");
+                }
+                else if(a == b && a == c){
+                    System.out.println("TAM GIAC CAN");
+                }
+                else if(a * a == b * b + c * c || b * b == a * a + c * c || c* c == b * b + a * a){
+                    System.out.println("TAM GIAC VUONG");
+                }
+                else{
+                    System.out.println("TAM GIAC THUONG");
+                }
+            }
+            else{
+                System.out.println("INVALID");
+            }
+        }
+        else{
+            System.out.println("INVALID");
+        }
+    }
+}

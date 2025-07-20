@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class bai1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for(int i = 0 ; i < n ; i++){
+            a[i] = sc.nextInt();
+        }
+        long tc = 0;
+        long tl = 0;
+        int dc = 0;
+        int dl = 0;
+        for(int i = 0; i < n; i++){
+            if(a[i] % 2 == 0){
+                ++dc;
+                tc += a[i];
+            }
+            else{
+                ++dl;
+                tl += a[i];
+            }
+        }
+        System.out.println("So phan tu chan la " + dc);
+        System.out.println("Tong cac phan tu chan la " + tc);
+        System.out.println("So phan tu le la " + dl);
+        System.out.println("Tong cac phan tu le la " + tl);
+    }
+    
+}

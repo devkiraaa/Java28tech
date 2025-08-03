@@ -1,0 +1,81 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class bai1 {
+    public static boolean ngto(int n){
+        if(n < 2){
+            return false;
+        }
+        for(int i = 2; i <= Math.sqrt(n); i++){
+            if(n % i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static long tich(ArrayList<Integer> a){
+        Collections.sort(a);
+        long product1 = (long)a.get(a.size() - 1) * a.get(a.size() - 2);
+        long product2 = (long)a.get(0) * a.get(1);
+        return Math.max(product1, product2);
+    }
+
+    public static boolean doiXung(ArrayList<Integer> a){
+        int l = 0; int r = a.size() - 1;
+        while(l <= r){
+            if(a.get(r) != a.get(l)){
+                return false;
+            }
+            l++;
+            r--;
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ArrayList<Integer> a = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            a.add(sc.nextInt());
+        }
+        int max_val = (int)-1e9;
+        int max_post = 0;
+        int min_val = (int)1e9;
+        int min_post = 0;
+        int cnt_ngto = 0;
+        for(int i = 0; i < n; i++){
+            if(a.get(i) > max_val){
+                max_val = a.get(i);
+                max_post = i;
+            }
+            if(a.get(i) < min_val){
+                min_val = a.get(i);
+                min_post = i;
+            }
+        }
+        for(int i = 0; i < n; i++){
+            if(ngto(a.get(1)))
+            ++cnt_ngto;
+        }
+        System.out.println(max_val + " " + max_post);
+        System.out.println(min_val + " " + min_post);
+        System.out.println(cnt_ngto);
+        System.out.println(tich(a));
+        if(doiXung(a)){
+            System.out.println("YES");
+        }
+        else{
+            System.out.println("NO");
+        }
+        
+        long pro = 1;
+        int mod = (int)1e9 + 7;
+        for(int x : a){
+            pro *= x;
+            pro %= mod;
+        }
+        System.out.println(pro);
+    }
+}

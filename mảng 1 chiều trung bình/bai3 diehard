@@ -1,0 +1,55 @@
+import java.util.Scanner;
+import java.util.Collections;
+import java.util.ArrayList;
+
+public class bai1 {
+
+    public static boolean check(ArrayList<Integer> a){
+        int dem25 = 0; 
+        int dem50 = 0;
+        int dem100 = 0;
+        for(int i = 0; i < a.size(); i++){
+            if(a.get(i) == 25){
+                dem25++;
+            }
+            else if(a.get(i) == 50){
+                if(dem25 > 0){
+                    dem25--;
+                    dem50++;
+                }
+                else{
+                    return false;
+                }
+            }
+            else{
+                if(dem25 >= 1 && dem50 >= 1){
+                    dem25--;
+                    dem50--;
+                    dem100++;
+                }
+                else if(dem25 >= 3){
+                    dem25 -= 3;
+                    dem100++;
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ArrayList<Integer> a = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            a.add(sc.nextInt());
+        }
+        if(check(a)){
+            System.out.println("YES");
+        }
+        else{
+            System.out.println("NO");
+        }
+}
+}

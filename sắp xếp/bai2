@@ -1,0 +1,43 @@
+import java.util.Scanner;
+import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Comparator;
+
+public class bai1{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int X = sc.nextInt();
+        ArrayList<Integer> a = new ArrayList<>();
+        ArrayList<Integer> b = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            int tmp = sc.nextInt();
+            a.add(tmp);
+            b.add(tmp);
+        }
+        Collections.sort(a, new Comparator<Integer>(){
+
+            @Override
+            public int compare(Integer o1, Integer o2) {
+               return Math.abs(o1 - X) - Math.abs(o2 - X);
+            }
+        });
+        for(int x : a){
+            System.out.print(x + " ");
+        }
+        System.out.print("\n");
+        Collections.sort(b, new Comparator<Integer>(){
+
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                if(o1 % 2 == 0 && o2 % 2 == 0) return o1 - o2;
+                else if(o1 % 2 == 1 && o2 % 2 == 1) return o2 - o1;
+                else if(o1 % 2 == 0 && o2 % 2 == 1) return -1;
+                else return 1;
+            }
+        });
+        for(int x : b){
+            System.out.print(x + " ");
+        }
+    }
+}

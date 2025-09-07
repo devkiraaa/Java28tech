@@ -1,0 +1,35 @@
+
+package bai4oop;
+
+public class NhanVien {
+    private String MaNhanVien;
+    private String hoten;
+    private String sex;
+    private String birth;
+    private String address;
+    private String masothue;
+    private String ngayhd;
+
+    public NhanVien(String MaNhanVien, String hoten, String sex, String birth, String address, String masothue, String ngayhd) {
+        this.MaNhanVien = MaNhanVien;
+        this.hoten = hoten;
+        this.sex = sex;
+        this.birth = birth;
+        this.address = address;
+        this.masothue = masothue;
+        this.ngayhd = ngayhd;
+    }
+    
+    public void infor(){
+        System.out.println(MaNhanVien + " " + hoten + " " + sex + " " + birth + " " + address + " " + masothue + " " + ngayhd);
+    }
+}
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        NhanVien x = new NhanVien("00001", sc.nextLine(), sc.nextLine(), sc.nextLine(),sc.nextLine(),sc.nextLine(),sc.nextLine() );
+        x.infor();
+    }
+}

@@ -1,0 +1,60 @@
+public class NhanVien{
+    private String id;
+    private String name;
+    private int luongcb;
+    private int ngaycong;
+    private String chucvu;
+
+    public NhanVien(String id, String name, int luongcb, int ngaycong, String chucvu) {
+        this.id = id;
+        this.name = name;
+        this.luongcb = luongcb;
+        this.ngaycong = ngaycong;
+        this.chucvu = chucvu;
+    }
+    
+    public int getLuong(){
+    return this.luongcb * this.ngaycong;
+}
+    
+    public int getLuongthuong(){
+        int luong = this.getLuong();
+        if(this.ngaycong >= 25){
+            return (int)(0.2 * luong);
+        }
+        else if(this.ngaycong >= 22){
+            return (int)(0.1 * luong);
+        }
+        else{
+            return 0;
+        }
+    }
+    
+    public int getPhuCap(){
+        if(this.chucvu.equals("GD"))
+            return 250000;
+        
+        if(this.chucvu.equals("PGD"))
+            return 200000;
+        
+        if(this.chucvu.equals("TP"))
+            return 180000;
+        
+        if(this.chucvu.equals("NV"))
+            return 150000;    
+        return 0;
+    }
+    
+    public String toString(){
+        return this.id + " " + this.name + " " + this.getLuong() + " " + this.getLuongthuong() + " " + this.getPhuCap() + " " + (this.getLuong()+ this.getLuongthuong() + this.getPhuCap());
+    }
+}
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        NhanVien x = new NhanVien("NV01", sc.nextLine(), Integer.parseInt(sc.nextLine()), Integer.parseInt(sc.nextLine()), sc.nextLine());
+        System.out.println(x);
+    }
+}

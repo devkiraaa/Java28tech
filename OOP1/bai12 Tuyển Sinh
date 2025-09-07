@@ -1,0 +1,54 @@
+package bai12oop;
+
+public class ThiSinh{
+    private String ma;
+    private String name;
+    private double diemtoan;
+    private double diemli;
+    private double diemhoa;
+
+    public ThiSinh(String ma, String name, double diemtoan, double diemli, double diemhoa) {
+        this.ma = ma;
+        this.name = name;
+        this.diemtoan = diemtoan;
+        this.diemli = diemli;
+        this.diemhoa = diemhoa;
+    }
+    
+    public double getTongDiem(){
+        double tongdiem = this.diemtoan + this.diemli + this.diemhoa;
+        String kv = this.ma.substring(0, 2);
+        if(kv.equals("KV1")){
+            tongdiem += 0.5;
+        }
+        if(kv.equals("KV2")){
+            tongdiem += 1.0;
+        }
+        if(kv.equals("KV3")){
+            tongdiem += 2.5;
+        }
+        return tongdiem;
+    }
+    
+    public String toString(){
+        String result = "";
+        if(this.getTongDiem() >= 24)result = "TRUNG TUYEN"; 
+        else result = "TRUOT";
+        if(this.getTongDiem() == (int)this.getTongDiem()){
+            return this.ma + " " + this.name + " " + this.ma.charAt(2) + " " + (int)this.getTongDiem() + " " + result;
+        }
+        else{
+            return this.ma + " " + this.name + " " + this.ma.charAt(2) + " " + String.format("%.1f", this.getTongDiem()) + " " + result;
+        }
+    }
+}
+
+import java.util.Scanner;
+
+public class Main_1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ThiSinh ts = new ThiSinh(sc.nextLine(), sc.nextLine(), sc.nextDouble(), sc.nextDouble(), sc.nextDouble());
+        System.out.println(ts);
+    }
+}

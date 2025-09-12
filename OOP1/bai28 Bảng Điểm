@@ -1,0 +1,88 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package OOPbai28;
+
+/**
+ *
+ * @author QUANGTUNG
+ */
+public class HocSinh {
+    private String ma, name;
+    private double toan, van, anh, li, hoa, sinh, su, dia, cd, cn;
+
+    public HocSinh(int ma, String name, double toan, double van, double anh, double li, double hoa, double sinh, double su, double dia, double cd, double cn) {
+        this.ma = "HS" + String.format("%02d", ma);
+        this.name = name;
+        this.toan = toan;
+        this.van = van;
+        this.anh = anh;
+        this.li = li;
+        this.hoa = hoa;
+        this.sinh = sinh;
+        this.su = su;
+        this.dia = dia;
+        this.cd = cd;
+        this.cn = cn;
+    }
+    
+    public double getDiemTB(){
+        return (this.toan + this.van + this.anh + this.li + this.hoa + this.sinh + this.su + this.dia + this.cd + this.cn) / 10;
+    }
+    
+    public String getHocLuc(){
+        if(this.getDiemTB() >= 9) return "XUAT SAC";
+        else if(this.getDiemTB() >= 8) return "GIOI";
+        else if(this.getDiemTB() >= 7) return "KHA";
+        else if(this.getDiemTB() >= 5) return "TB";
+        else 
+            return "YEU";
+    }
+    
+    public String getMa(){
+        return this.ma;
+    }
+    
+    public String toString(){
+        return this.ma + " " + this.name + " " + String.format("%.1f", this.getDiemTB()) + " " + this.getHocLuc();
+    }
+}
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package OOPbai28;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ArrayList<HocSinh> arr = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            sc.nextLine();
+            HocSinh hs = new HocSinh(i + 1, sc.nextLine(), sc.nextDouble(), 
+            sc.nextDouble(), sc.nextDouble(), sc.nextDouble(), sc.nextDouble(), 
+            sc.nextDouble(), sc.nextDouble(), sc.nextDouble(), sc.nextDouble(), sc.nextDouble());
+            arr.add(hs);
+        }
+        Collections.sort(arr, new Comparator<HocSinh>(){
+            @Override
+            public int compare(HocSinh o1, HocSinh o2) {
+              if(o1.getDiemTB() < o2.getDiemTB()){
+                  return 1;
+              }
+              else
+                  return -1;
+            }   
+    });
+        for(HocSinh x : arr){
+            System.out.println(x);
+        }
+    }
+}

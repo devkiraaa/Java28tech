@@ -1,0 +1,100 @@
+package OOP2b3;
+
+public class NhanVat{
+    private int power, blood;
+    private boolean alive;
+
+    public NhanVat(int power, int blood, boolean alive) {
+        this.power = power;
+        this.blood = blood;
+        this.alive = alive;
+    }
+    
+    public String toString(){
+        String res = "";
+        if(this.alive) res = "ALIVE";
+        else res = "DEAD";
+        return "POWER : " + this.power + "\nBLOOD : " + this.blood + "\n" + res + "\n-----------------";
+    }
+    
+    public void pea(){
+        if(this.alive){
+            this.blood += 10;
+            this.power += 2;
+        }
+    }
+    
+    public void mushroom(){
+        if(this.alive){
+            this.blood -= 15;
+            this.power -= 2;
+            if(this.blood <= 0 || this.power <= 0){
+                this.blood = 0;
+                this.power = 0;
+                this.alive = false;
+            }
+        }
+    }
+    
+    public void witch(int powerWitch){
+        if(this.alive){
+            if(powerWitch >= this.power){
+                this.blood = 0;
+                this.power = 0;
+                this.alive = false;
+            }
+            else{
+                this.power += 5;
+            }
+        }
+    }
+    
+    public void soldier(int powerSoldier){
+        if(this.alive){
+            if(powerSoldier >= this.power){
+                this.blood = 0;
+                this.power = 0;
+                this.alive = false;
+            }
+            else{
+                this.blood += 5;
+                this.power += 7;
+            }
+        }
+    }
+   }
+   package OOP2b3;
+
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int blood = Integer.parseInt(sc.nextLine().substring(8));
+        int power = Integer.parseInt(sc.nextLine().substring(8));
+        boolean alive = false;
+        String s = sc.nextLine();
+        if(s.equals("ALIVE")) alive = true;
+        NhanVat nv = new NhanVat(power, blood, alive);
+        int sk = sc.nextInt();
+        sc.nextLine();
+        for(int i = 0 ; i < sk; i++){
+            String ev = sc.nextLine();
+            if(ev.equals("pea")){
+                nv.pea();
+            }
+            else if(ev.equals("mushroom")){
+                nv.mushroom();
+            }
+            else if(ev.charAt(0) == 'w'){
+                int power1 = Integer.parseInt(ev.substring(6));
+                nv.witch(power1);
+            }
+            else{
+                int power1 = Integer.parseInt(ev.substring(8));
+                nv.soldier(power1);
+        }
+            System.out.println(nv);    
+    }
+    }
+}
